@@ -5,17 +5,39 @@
     <title>Contacts</title>
 </head>
 <body>
-
-    <table style="width:100%">
+ <a href="{% url 'contacts:contacts' contact.project.pk %}">
+    go back
+ </a>
+<h3>Contact details</h3>
+    <table style="width:50%">
       <tr>
-             <th>Name</th>
-             <td>{{ contacts.name }}</td>
+          <th>Project name</th>
+          <td>{{ contact.project.name }}</td>
       </tr>
       <tr>
-             <th>Surname</th>
-             <td>{{ contacts.surname }}</td>
+          <th>Name</th>
+          <td>{{ contact.name }}</td>
+      </tr>
+      <tr>
+          <th>Surname</th>
+          <td>{{ contact.surname }}</td>
+      </tr>
+      <tr>
+          <th>Status</th>
+          <td>{{ contact.status }}</td>
       </tr>
     </table>
 
+<h3>Contact notes</h3>
+
+    <table style="width:50%">
+      {% for note in notes %}
+      <tr>
+             <td>{{ note.name }}</td>
+             <td>{{ note.text }}</td>
+      </tr>
+
+      {% endfor %}
+    </table>
 </body>
 </html>

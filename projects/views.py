@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Project
-from contacts.models import Contact, Note
+from contacts.models import Contact
 
 
 def projects(request):
