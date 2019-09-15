@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+logout, login
+    {% if user.is_authenticated %}
+        <h3>{{ user.get_username }} user projects</h3>
+    {% else %}
+        <h3>Please log in to see the data.</h3>
+    {% endif %}
+
+    <table style="width:100%">
+      <tr>
+          {% for project in projects %}
+             <th>{{ project.name }}</th>
+          {% endfor %}
+      </tr>
+    </table>
+
+</body>
+</html>
