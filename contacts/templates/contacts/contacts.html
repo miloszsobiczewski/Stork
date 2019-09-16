@@ -19,7 +19,7 @@
       {% for contact in contacts %}
       <tr>
              <td>
-                 <a href="{% url 'contacts:details' project.pk contact.pk %}">
+                 <a href="{% url 'contacts:contact-details' contact.pk %}">
                     # {{ contact.pk }}
                  </a>
              </td>

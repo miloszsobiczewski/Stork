@@ -6,7 +6,7 @@
 </head>
 <body>
 {% if contact %}
- <a href="{% url 'projects:project-details' contact.project.pk %}">
+ <a href="{% url 'contacts:contacts' contact.project.pk %}">
     go back
  </a>
 {% else %}
@@ -34,30 +34,16 @@
       </tr>
     </table>
 
-    <a href="{% url 'contacts:edit-contract' contact.pk %}">
-        <button>EDIT CONTACT</button>
-    </a>
-
 <h3>Contact notes</h3>
 
     <table style="width:50%">
       {% for note in notes %}
       <tr>
-            <td>{{ note.name }}</td>
-            <td>{{ note.text }}</td>
-            <td>
-                <a href="{% url 'contacts:edit-note' note.pk %}">
-                  <button>EDIT NOTE</button>
-                </a>
-            </td>
+             <td>{{ note.name }}</td>
+             <td>{{ note.text }}</td>
       </tr>
-
-
 
       {% endfor %}
     </table>
-
-
-
 </body>
 </html>

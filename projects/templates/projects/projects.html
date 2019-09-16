@@ -16,7 +16,7 @@ logout, login
       {% for project in projects %}
       <tr>
              <td>
-                 <a href="{% url 'contacts:contacts' project.pk %}">
+                 <a href="{% url 'projects:project-details' project.pk %}">
                     # {{ project.pk }}
                  </a>
              </td>
