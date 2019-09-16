@@ -5,9 +5,15 @@
     <title>Contacts</title>
 </head>
 <body>
+{% if contact %}
  <a href="{% url 'contacts:contacts' contact.project.pk %}">
     go back
  </a>
+{% else %}
+ <a href="{% url 'projects:projects' %}">
+    go home
+ </a>
+{% endif %}
 <h3>Contact details</h3>
     <table style="width:50%">
       <tr>

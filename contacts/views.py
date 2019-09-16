@@ -4,8 +4,8 @@ from .models import Project
 
 
 def contacts(request, selected_project=None):
-    contacts = Contact.objects.filter(project=selected_project)
-    project = Project.objects.get(pk=selected_project)
+    contacts = Contact.objects.for_user(request.user).filter(project=selected_project)
+    project = Project.objects.for_user(request.user).get(pk=selected_project)
 
     context = {
         "project": project,
@@ -15,8 +15,11 @@ def contacts(request, selected_project=None):
 
 
 def contact_details(request, selected_project=None, selected_contact=None):
-    contact = Contact.objects.get(project=selected_contact)
-    notes = Note.objects.filter(contact=contact.pk).order_by("-pk")
+    contact = Contact.objects.for_user(request.user).filter(project=selected_contact)
+    if not contact:
+        return render(request, "contacts/details.html")
+    contact = contact.get()
+    notes = Note.objects.for_user(request.user).filter(contact=contact.pk)
     context = {
         "contact_id": selected_contact,
         "contact": contact,

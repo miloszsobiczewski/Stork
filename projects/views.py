@@ -1,14 +1,11 @@
 from django.shortcuts import render
 from .models import Project
-from contacts.models import Contact
 
 
 def projects(request):
-    projects = Project.objects.all()
-    contacts = Contact.objects.all()
+    projects = Project.objects.for_user(request.user)
 
     context = {
         "projects": projects,
-        "contacts": contacts
     }
     return render(request, "projects/projects.html", context)
